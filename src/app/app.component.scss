@@ -1,0 +1,16 @@
+main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: inherit;
+    position: relative;
+}
+
+form {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
