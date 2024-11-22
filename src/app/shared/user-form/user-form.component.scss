@@ -1,0 +1,21 @@
+.user-form {
+    max-width: 400px;
+    min-width: 250px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &__interest-options {
+        display: flex;
+        flex-wrap: wrap;
+
+        mat-checkbox {
+            width: 200px;
+        }
+    }
+
+    &__submit-btn {
+        margin-top: 10px;
+    }
+}
