@@ -1,36 +1,3 @@
 <main class="main">
-  <div class="content">
-    <form [formGroup]="form" (submit)="saveDetails()">
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name">
-        <mat-error>Please enter a valid name</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Email Address</mat-label>
-        <input matInput formControlName="emailAddress">
-        <mat-error>Please enter a valid email address</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Phone Number</mat-label>
-        <input matInput formControlName="phoneNumber">
-        <mat-error>Please enter a valid phone number</mat-error>
-      </mat-form-field>
-
-      <div class="interests" formGroupName="interests">
-        <h4>Interests</h4>
-
-        <div class="interests__options">
-          <mat-checkbox formControlName="fitness">Fitness</mat-checkbox>
-          <mat-checkbox formControlName="reading">Reading</mat-checkbox>
-          <mat-checkbox formControlName="movies">Movies</mat-checkbox>
-          <mat-checkbox formControlName="gaming">Gaming</mat-checkbox>
-          <mat-checkbox formControlName="cooking">Cooking</mat-checkbox>
-          <mat-checkbox formControlName="travelling">Travelling</mat-checkbox>
-        </div>
-      </div>
-
-      <button class="submit-btn" type="submit" mat-flat-button color="primary">Save</button>
-    </form>
-  </div>
+  <router-outlet></router-outlet>
 </main>

@@ -1,0 +1,46 @@
+.ngrx {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    &__title {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 10px;
+
+        img {
+            height: 40px;
+        }
+
+        h1 {
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+    }
+
+    &__form {
+        max-width: 400px;
+        min-width: 250px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    &__interest-options {
+        display: flex;
+        flex-wrap: wrap;
+
+        mat-checkbox {
+            width: 200px;
+        }
+    }
+
+    &__submit-btn {
+        margin-top: 10px;
+    }
+}
