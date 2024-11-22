@@ -1,0 +1,41 @@
+<div class="ng-services">
+    <app-back-to-home-link></app-back-to-home-link>
+
+    <div class="ng-services__title">
+        <img src="../../../assets/imgs/angular-logo.webp" />
+        <h1>Store form data using Ng Services</h1>
+    </div>
+
+    <form class="ng-services__form" [formGroup]="form" (submit)="saveDetails()">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error>Please enter a valid name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email Address</mat-label>
+            <input matInput formControlName="emailAddress">
+            <mat-error>Please enter a valid email address</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneNumber">
+            <mat-error>Please enter a valid phone number</mat-error>
+        </mat-form-field>
+
+        <div class="ng-services__interests" formGroupName="interests">
+            <h4>Interests</h4>
+
+            <div class="ng-services__interest-options">
+            <mat-checkbox formControlName="fitness">Fitness</mat-checkbox>
+            <mat-checkbox formControlName="reading">Reading</mat-checkbox>
+            <mat-checkbox formControlName="movies">Movies</mat-checkbox>
+            <mat-checkbox formControlName="gaming">Gaming</mat-checkbox>
+            <mat-checkbox formControlName="cooking">Cooking</mat-checkbox>
+            <mat-checkbox formControlName="travelling">Travelling</mat-checkbox>
+            </div>
+        </div>
+
+        <button class="ng-services__submit-btn" type="submit" mat-flat-button color="primary">Save</button>
+    </form>
+</div>
