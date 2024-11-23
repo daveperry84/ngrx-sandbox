@@ -20,13 +20,12 @@ import { updateUser } from '../../shared/states/user-data/user-data.actions';
   styleUrl: './ngrx-form.component.scss'
 })
 export class NgrxFormComponent {
-  userData$: Observable<UserData>;
   userForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {
-    this.userData$ = this.store.select(selectUserData);
+    const userData$ = this.store.select(selectUserData);
 
-    this.userData$.pipe(first()).subscribe((userState) => {
+    userData$.pipe(first()).subscribe((userState) => {
       this.buildUserFormFromState(userState);
     })
   }

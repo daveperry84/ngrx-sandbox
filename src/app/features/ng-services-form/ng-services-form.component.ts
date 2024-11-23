@@ -3,6 +3,7 @@ import { BackToHomeLinkComponent } from "../../shared/components/back-to-home-li
 import { UserFormComponent } from "../../shared/components/user-form/user-form.component";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserData } from '../../shared/models/user-data.model';
+import { UserDataService } from '../../shared/services/user-data.service';
 
 @Component({
   selector: 'app-ng-services-form',
@@ -17,23 +18,27 @@ import { UserData } from '../../shared/models/user-data.model';
 export class NgServicesFormComponent {
   userForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private userDataService: UserDataService) {
+    this.buildUserFormFromState(this.userDataService.getUserData());
+  }
+
+  buildUserFormFromState(userState: UserData): void {
     this.userForm = this.formBuilder.group({
-        name: ['', Validators.required],
-        emailAddress: ['', [Validators.required, Validators.email]],
-        phoneNumber: ['', [Validators.required, Validators.pattern("[0-9]{11}")]],
-        interests: this.formBuilder.group({
-          fitness: [false],
-          reading: [false],
-          movies: [false],
-          gaming: [false],
-          cooking: [false],
-          travelling: [false],
-        })
+      name: [userState.name, Validators.required],
+      emailAddress: [userState.emailAddress, [Validators.required, Validators.email]],
+      phoneNumber: [userState.phoneNumber, [Validators.required, Validators.pattern("[0-9]{11}")]],
+      interests: this.formBuilder.group({
+        fitness: [userState.interests.fitness],
+        reading: [userState.interests.reading],
+        movies: [userState.interests.movies],
+        gaming: [userState.interests.gaming],
+        cooking: [userState.interests.cooking],
+        travelling: [userState.interests.travelling],
       })
+    });
   }
   
   saveUserData(user: UserData): void {
-    console.log('Save Data', user);
+    this.userDataService.setUserData(user);
   }
 }
