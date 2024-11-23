@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BackToHomeLinkComponent } from "../../shared/back-to-home-link/back-to-home-link.component";
-import { UserFormComponent } from "../../shared/user-form/user-form.component";
+import { BackToHomeLinkComponent } from "../../shared/components/back-to-home-link/back-to-home-link.component";
+import { UserFormComponent } from "../../shared/components/user-form/user-form.component";
 
 @Component({
   selector: 'app-ngrx-form',
