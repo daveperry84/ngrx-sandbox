@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BackToHomeLinkComponent } from "../../shared/components/back-to-home-link/back-to-home-link.component";
 import { UserFormComponent } from "../../shared/components/user-form/user-form.component";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserData } from '../../shared/models/user-data.model';
 
 @Component({
   selector: 'app-ng-services-form',
@@ -32,9 +33,7 @@ export class NgServicesFormComponent {
       })
   }
   
-  saveUserData(userForm: FormGroup): void {
-    if (userForm.valid) {
-      console.log('Save Data', userForm.value);
-    }
+  saveUserData(user: UserData): void {
+    console.log('Save Data', user);
   }
 }

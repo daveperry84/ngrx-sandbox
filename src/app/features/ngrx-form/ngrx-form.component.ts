@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { selectUserData } from '../../shared/states/user-data/user-data.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
-import { Observable } from 'rxjs';
+import { first, Observable } from 'rxjs';
 import { UserData } from '../../shared/models/user-data.model';
 import { updateUser } from '../../shared/states/user-data/user-data.actions';
 
@@ -26,7 +26,7 @@ export class NgrxFormComponent {
   constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {
     this.userData$ = this.store.select(selectUserData);
 
-    this.userData$.subscribe((userState) => {
+    this.userData$.pipe(first()).subscribe((userState) => {
       this.buildUserFormFromState(userState);
     })
   }
@@ -44,13 +44,10 @@ export class NgrxFormComponent {
         cooking: [userState.interests.cooking],
         travelling: [userState.interests.travelling],
       })
-    })
+    });
   }
 
-  saveUserData(userForm: FormGroup): void {
-    if (userForm.valid) {
-      console.log('Save Details', userForm.value);
-      this.store.dispatch(updateUser(userForm.value))
-    }
+  saveUserData(user: UserData): void {
+    this.store.dispatch(updateUser(user))
   }
 }
