@@ -5,16 +5,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { selectUserData } from '../../shared/states/user-data/user-data.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
-import { first, Observable } from 'rxjs';
+import { first } from 'rxjs';
 import { UserData } from '../../shared/models/user-data.model';
-import { updateUser } from '../../shared/states/user-data/user-data.actions';
+import { undoLastUserChange, updateUser } from '../../shared/states/user-data/user-data.actions';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-ngrx-form',
   standalone: true,
   imports: [
     BackToHomeLinkComponent,
-    UserFormComponent
+    UserFormComponent,
+    MatButtonModule
 ],
   templateUrl: './ngrx-form.component.html',
   styleUrl: './ngrx-form.component.scss'
@@ -26,7 +28,7 @@ export class NgrxFormComponent {
     const userData$ = this.store.select(selectUserData);
 
     userData$.pipe(first()).subscribe((userState) => {
-      this.buildUserFormFromState(userState);
+      this.buildUserFormFromState(userState.present);
     })
   }
 
@@ -47,6 +49,14 @@ export class NgrxFormComponent {
   }
 
   saveUserData(user: UserData): void {
-    this.store.dispatch(updateUser(user))
+    this.store.dispatch(updateUser(user));
+  }
+
+  undoLastChange(): void {
+    this.store.dispatch(undoLastUserChange());
+
+    this.store.select(selectUserData).pipe(first()).subscribe((userState) => {
+      this.buildUserFormFromState(userState.present);
+    })
   }
 }

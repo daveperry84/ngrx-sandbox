@@ -1,3 +1,8 @@
+export interface UserDataState {
+    past: UserData[];
+    present: UserData;
+}
+
 export interface UserData {
     name: string;
     emailAddress: string;

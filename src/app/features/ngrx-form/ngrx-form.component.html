@@ -7,4 +7,6 @@
     </div>
 
     <app-user-form [form]="userForm" (saveUser)="saveUserData($event)"></app-user-form>
+    
+    <button mat-raised-button (click)="undoLastChange()">Undo Last Change</button>
 </div>

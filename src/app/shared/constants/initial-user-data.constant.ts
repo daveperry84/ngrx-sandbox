@@ -1,6 +1,6 @@
 import { UserData } from "../models/user-data.model";
 
-export const initialUserDataState: UserData = {
+export const initialUserData: UserData = {
     name: '',
     emailAddress: '',
     phoneNumber: '',

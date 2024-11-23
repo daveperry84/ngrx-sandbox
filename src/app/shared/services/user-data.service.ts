@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { UserData } from '../models/user-data.model';
-import { initialUserDataState } from '../constants/initial-user-data.constant';
+import { initialUserData } from '../constants/initial-user-data.constant';
 
 @Injectable({
     providedIn: 'root',
 })
 export class UserDataService {
-    private _userDataStore: UserData = initialUserDataState;
+    private _userDataStore: UserData = initialUserData;
 
     getUserData(): UserData {
         return this._userDataStore;
