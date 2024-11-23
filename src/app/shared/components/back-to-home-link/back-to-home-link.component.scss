@@ -5,7 +5,7 @@ $font-size: 15px;
     top: 15px;
     right: 15px;
     
-    a {
+    &__cta {
         display: flex;
         gap: 4px;
         font-size: $font-size;

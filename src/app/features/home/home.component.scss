@@ -35,19 +35,19 @@ $action-font-size: 18px;
         align-items: flex-end;
         margin-top: 10px;
         gap: 15px;
+    }
 
-        a {
-            font-size: $action-font-size;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            color: black;
-            text-align: right;
-            cursor: pointer;
+    &__action-link {
+        font-size: $action-font-size;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        color: black;
+        text-align: right;
+        cursor: pointer;
 
-            &:hover {
-                color: #1A60AB;
-            }
+        &:hover {
+            color: #1A60AB;
         }
 
         mat-icon {
