@@ -6,5 +6,5 @@
         <h1>Store form data using NgRx</h1>
     </div>
 
-    <app-user-form></app-user-form>
+    <app-user-form [form]="userForm" (saveUser)="saveUserData($event)"></app-user-form>
 </div>

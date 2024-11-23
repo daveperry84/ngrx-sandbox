@@ -1,4 +1,4 @@
-<form class="user-form" [formGroup]="form" (submit)="saveDetails()">
+<form class="user-form" [formGroup]="form" (submit)="saveUser.emit(form)">
     <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput formControlName="name">
