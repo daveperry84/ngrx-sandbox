@@ -1,0 +1,48 @@
+.user-form {
+    max-width: 400px;
+    min-width: 250px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &__interest-options {
+        display: flex;
+        flex-wrap: wrap;
+
+        mat-checkbox {
+            width: 200px;
+        }
+    }
+
+    &__phone-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h3 {
+            margin-bottom: 0;
+        }
+    }
+
+    &__phone-field {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+
+        mat-form-field {
+            width: 100%;
+        }
+
+        mat-icon {
+            padding: 10px;
+            cursor: pointer;
+
+            &.disabled {
+                opacity: 0.25;
+                cursor: default;
+            }
+        }
+    }
+}

@@ -1,0 +1,28 @@
+$font-size: 15px;
+
+.back-home-link {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    
+    &__cta {
+        display: flex;
+        gap: 4px;
+        text-decoration: underline;
+        font-size: $font-size;
+        align-items: center;
+        font-weight: 500;
+        color: black;
+        cursor: pointer;
+
+        &:hover {
+            color: #1A60AB;
+        }
+    }
+
+    mat-icon {
+        font-size: $font-size;
+        width: $font-size;
+        height: $font-size;
+    }
+}
