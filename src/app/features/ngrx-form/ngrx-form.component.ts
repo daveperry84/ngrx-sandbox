@@ -40,9 +40,15 @@ export class NgrxFormComponent implements OnInit {
 
   buildUserFormFromState(userState: UserData): void {
     this.userForm = this.formBuilder.group({
-      name: [userState.name, Validators.required],
-      emailAddress: [userState.emailAddress, [Validators.required, Validators.email]],
-      phoneNumber: [userState.phoneNumber, [Validators.required, Validators.pattern("[0-9]{11}")]],
+      name: [userState.name, { validators: [Validators.required], updateOn: 'blur' }],
+      emailAddress: [userState.emailAddress, { 
+        validators: [Validators.required, Validators.email], 
+        updateOn: 'blur' 
+      }],
+      phoneNumber: [userState.phoneNumber, { 
+        validators: [Validators.required, Validators.pattern("[0-9]{11}")], 
+        updateOn: 'blur' 
+      }],
       interests: this.formBuilder.group({
         fitness: [userState.interests.fitness],
         reading: [userState.interests.reading],
