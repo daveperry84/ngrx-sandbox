@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackToHomeLinkComponent } from "../../shared/components/back-to-home-link/back-to-home-link.component";
 import { UserFormComponent } from "../../shared/components/user-form/user-form.component";
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { selectUserData } from '../../shared/states/user-data/user-data.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
@@ -22,42 +21,20 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './ngrx-form.component.scss'
 })
 export class NgrxFormComponent implements OnInit {
-  userForm!: FormGroup;
+  userData!: UserData;
   undoEnabled = false;
 
-  constructor(private formBuilder: FormBuilder, private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>) { }
   
   ngOnInit(): void {
     this.retrieveUserState((userState) => {
       this.undoEnabled = !!userState.past.length;
-      this.buildUserFormFromState(userState.present);
+      this.userData = userState.present;
     });
   }
 
   retrieveUserState(cb: (state: UserDataState) => void): void {
     this.store.select(selectUserData).pipe(take(1)).subscribe(cb);
-  }
-
-  buildUserFormFromState(userState: UserData): void {
-    this.userForm = this.formBuilder.group({
-      name: [userState.name, { validators: [Validators.required], updateOn: 'blur' }],
-      emailAddress: [userState.emailAddress, { 
-        validators: [Validators.required, Validators.email], 
-        updateOn: 'blur' 
-      }],
-      phoneNumber: [userState.phoneNumber, { 
-        validators: [Validators.required, Validators.pattern("[0-9]{11}")], 
-        updateOn: 'blur' 
-      }],
-      interests: this.formBuilder.group({
-        fitness: [userState.interests.fitness],
-        reading: [userState.interests.reading],
-        movies: [userState.interests.movies],
-        gaming: [userState.interests.gaming],
-        cooking: [userState.interests.cooking],
-        travelling: [userState.interests.travelling],
-      })
-    });
   }
 
   saveUserData(user: UserData): void {
@@ -70,7 +47,7 @@ export class NgrxFormComponent implements OnInit {
   undoLastChange(): void {
     this.store.dispatch(undoLastUserChange());
     this.retrieveUserState((userState) => {
-      this.buildUserFormFromState(userState.present);
+      this.userData = { ...this.userData, ...userState.present };
       this.undoEnabled = !!userState.past.length;
     });
   }

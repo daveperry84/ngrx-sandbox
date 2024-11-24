@@ -6,7 +6,7 @@ export interface UserDataState {
 export interface UserData {
     name: string;
     emailAddress: string;
-    phoneNumber: string;
+    phoneNumbers: string[];
     interests: UserInterests;
 }
 

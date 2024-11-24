@@ -6,7 +6,7 @@
         <h1>Store form data using NgRx</h1>
     </div>
 
-    <app-user-form [form]="userForm" (saveUser)="saveUserData($event)">
+    <app-user-form [userData]="userData" (saveUser)="saveUserData($event)">
         <button 
             type="button" 
             class="ngrx__undo-btn" 
