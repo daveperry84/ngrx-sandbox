@@ -28,6 +28,19 @@ $action-font-size: 18px;
         }
     }
 
+    &__title {
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            margin-bottom: 0;
+        }
+
+        small {
+            align-self: flex-end;
+        }
+    }
+
     &__actions {
         width: 100%;
         display: flex;
@@ -44,6 +57,8 @@ $action-font-size: 18px;
         align-items: center;
         color: black;
         text-align: right;
+        text-decoration: underline;
+        gap: 2px;
         cursor: pointer;
 
         &:hover {

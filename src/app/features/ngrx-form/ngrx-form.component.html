@@ -10,7 +10,8 @@
         <button 
             type="button" 
             class="ngrx__undo-btn" 
-            mat-raised-button 
+            mat-stroked-button 
+            color="primary"
             (click)="undoLastChange()"
             [disabled]="!undoEnabled">
             Undo Last Change
