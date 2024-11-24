@@ -6,7 +6,14 @@
         <h1>Store form data using NgRx</h1>
     </div>
 
-    <app-user-form [form]="userForm" (saveUser)="saveUserData($event)"></app-user-form>
-    
-    <button mat-raised-button (click)="undoLastChange()">Undo Last Change</button>
+    <app-user-form [form]="userForm" (saveUser)="saveUserData($event)">
+        <button 
+            type="button" 
+            class="ngrx__undo-btn" 
+            mat-raised-button 
+            (click)="undoLastChange()"
+            [disabled]="!undoEnabled">
+            Undo Last Change
+        </button>
+    </app-user-form>
 </div>

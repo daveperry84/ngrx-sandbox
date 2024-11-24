@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BackToHomeLinkComponent } from "../../shared/components/back-to-home-link/back-to-home-link.component";
 import { UserFormComponent } from "../../shared/components/user-form/user-form.component";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { selectUserData } from '../../shared/states/user-data/user-data.selector';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
-import { first } from 'rxjs';
-import { UserData } from '../../shared/models/user-data.model';
+import { Subject, take, takeUntil } from 'rxjs';
+import { UserData, UserDataState } from '../../shared/models/user-data.model';
 import { undoLastUserChange, updateUser } from '../../shared/states/user-data/user-data.actions';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -21,15 +21,21 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './ngrx-form.component.html',
   styleUrl: './ngrx-form.component.scss'
 })
-export class NgrxFormComponent {
+export class NgrxFormComponent implements OnInit {
   userForm!: FormGroup;
+  undoEnabled = false;
 
-  constructor(private formBuilder: FormBuilder, private store: Store<AppState>) {
-    const userData$ = this.store.select(selectUserData);
-
-    userData$.pipe(first()).subscribe((userState) => {
+  constructor(private formBuilder: FormBuilder, private store: Store<AppState>) { }
+  
+  ngOnInit(): void {
+    this.retrieveUserState((userState) => {
+      this.undoEnabled = !!userState.past.length;
       this.buildUserFormFromState(userState.present);
-    })
+    });
+  }
+
+  retrieveUserState(cb: (state: UserDataState) => void): void {
+    this.store.select(selectUserData).pipe(take(1)).subscribe(cb);
   }
 
   buildUserFormFromState(userState: UserData): void {
@@ -50,13 +56,16 @@ export class NgrxFormComponent {
 
   saveUserData(user: UserData): void {
     this.store.dispatch(updateUser(user));
+    this.retrieveUserState((userState) => {
+      this.undoEnabled = !!userState.past.length;
+    });
   }
 
   undoLastChange(): void {
     this.store.dispatch(undoLastUserChange());
-
-    this.store.select(selectUserData).pipe(first()).subscribe((userState) => {
+    this.retrieveUserState((userState) => {
       this.buildUserFormFromState(userState.present);
-    })
+      this.undoEnabled = !!userState.past.length;
+    });
   }
 }
