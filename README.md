@@ -2,26 +2,24 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
 
+## Objective
+
+Create a basic Angular application where the user can fill out a dynamic form. The form should consist of a few fields (e.g., Name, Email, and a dynamic list of phone numbers) and perform real-time validation. The form data should also be saved to the global state, and the app should demonstrate interaction with the state management library (NgRx).
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## NgRx/RxJS Discussion Points
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### What are the trade-offs of using NgRx and RxJS in form handling?
 
-## Build
+Something
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Potential performance pitfalls or over-engineering issues that can arise when using RxJS for simple form interactions?
 
-## Running unit tests
+Something
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### When and why would you choose not to use NgRx/RxJS for form state management?
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Something
