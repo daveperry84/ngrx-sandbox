@@ -1,22 +1,29 @@
 <div class="home">
-    <img class="home__logo" src="../../../assets/imgs/bud-logo.webp" />
+    <div class="home__images">
+        <img src="../../../assets/imgs/ngrx-logo.svg" />
+        <img src="../../../assets/imgs/vs-image.webp" />
+        <img src="../../../assets/imgs/angular-logo.webp"/>
+    </div>
+   
     <div class="home__content">
         <div class="home__title">
-            <h1>Front-end Developer Technical Test</h1>
+            <h1>State Management in Angular applications</h1>
+            <h2>NgRx vs Angular Services</h2>
             <small>By Dave Perry</small>
         </div>
 
         <div class="home__objective">
-            <h2>Objective</h2>
+            <h3>Objective</h3>
             <p>Create a basic Angular application where the user can fill out a dynamic form. The form should
                 consist of a few fields (e.g., Name, Email, and a dynamic list of phone numbers) and perform real-
                 time validation. The form data should also be saved to the global state, and the app should
-                demonstrate interaction with the state management library (NgRx).</p>
+                demonstrate interaction with the state management library (NgRx) and an alternative state management 
+                method (Angular services).</p>
         </div>
 
         <div class="home__actions">
-            <div class="home__action-link" routerLink="/ngrx-form">Store form data using NgRx <mat-icon>arrow_forward</mat-icon></div>
-            <div class="home__action-link" routerLink="/ng-services-form">Store form data using Ng Services <mat-icon>arrow_forward</mat-icon></div>
+            <span class="home__action-link" routerLink="/ngrx-form">Store form data using NgRx <mat-icon>arrow_forward</mat-icon></span>
+            <span class="home__action-link" routerLink="/ng-services-form">Store form data using Ng Services <mat-icon>arrow_forward</mat-icon></span>
         </div>
     </div>
 </div>

@@ -1,4 +1,5 @@
-$action-font-size: 18px;
+$font-size: 15px;
+$hover-font-size: 16px;
 
 .home {
     display: flex;
@@ -6,9 +7,19 @@ $action-font-size: 18px;
     align-items: center;
     justify-content: center;
     height: 100vh;
+    padding: 0 25px;
 
-    &__logo {
+    &__images {
         margin: 15px;
+        display: flex;
+
+        img {
+            max-height: 120px;
+
+            @media (max-width: 768px) {
+                max-height: 80px;
+            }
+        }
     }
 
     &__content {
@@ -18,7 +29,6 @@ $action-font-size: 18px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 0 15px;
         gap: 8px;
 
         h1 {
@@ -31,13 +41,14 @@ $action-font-size: 18px;
     &__title {
         display: flex;
         flex-direction: column;
+        align-items: center;
 
-        h1 {
+        h1, h2 {
             margin-bottom: 0;
         }
 
-        small {
-            align-self: flex-end;
+        h2 {
+            color: var(--secondary-font);
         }
     }
 
@@ -51,24 +62,37 @@ $action-font-size: 18px;
     }
 
     &__action-link {
-        font-size: $action-font-size;
+        font-size: $font-size;
         font-weight: 500;
         display: flex;
         align-items: center;
-        color: black;
         text-align: right;
-        text-decoration: underline;
         gap: 2px;
         cursor: pointer;
 
-        &:hover {
-            color: #1A60AB;
+        mat-icon {
+            font-size: $font-size;
+            width: $font-size;
+            height: $font-size;
         }
 
-        mat-icon {
-            font-size: $action-font-size;
-            width: $action-font-size;
-            height: $action-font-size;
+        &:hover {
+            color: var(--secondary-font);
+            font-size: $hover-font-size;
+            text-decoration: underline;
+            transition: font-size 0.5s;
+
+            mat-icon {
+                font-size: $hover-font-size;
+                transition: font-size 0.5s;
+            }
+        }
+    }
+
+    &__objective {
+        h3 {
+            font-weight: 500;
+            color: var(--secondary-font);
         }
     }
 }
