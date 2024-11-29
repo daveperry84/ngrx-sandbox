@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BackToHomeLinkComponent } from "../../shared/components/back-to-home-link/back-to-home-link.component";
 import { UserFormComponent } from "../../shared/components/user-form/user-form.component";
 import { selectUserData } from '../../shared/states/user-data/user-data.selector';
 import { Store } from '@ngrx/store';
@@ -13,7 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-ngrx-form',
   standalone: true,
   imports: [
-    BackToHomeLinkComponent,
     UserFormComponent,
     MatButtonModule
 ],
