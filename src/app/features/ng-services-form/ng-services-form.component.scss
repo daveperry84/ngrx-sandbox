@@ -3,15 +3,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    overflow: auto;
+    padding: 30px;
 
     &__title {
         display: flex;
         justify-content: center;
         gap: 8px;
         align-items: center;
-        margin: 15px 10px;
+        margin: 15px 0;
 
         img {
             height: 40px;
@@ -20,6 +19,14 @@
         h1 {
             margin-bottom: 0;
             font-weight: 500;
+            font-size: 30px;
+            line-height: 1.2em;
+        }
+    }
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 18px;
         }
     }
 }

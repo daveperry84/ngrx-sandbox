@@ -1,17 +1,30 @@
 .user-form {
-    max-width: 400px;
-    min-width: 250px;
-    padding: 15px;
+    padding: 15px 0;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
+    gap: 30px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 5px;
+
+        &__column {
+            max-width: 400px;
+        }
+    }
+
+    &__column {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 50%;
+        gap: 5px;
+    }
 
     &__interest-options {
         display: flex;
         flex-wrap: wrap;
 
         mat-checkbox {
-            width: 200px;
+            flex-basis: 50%;
         }
     }
 

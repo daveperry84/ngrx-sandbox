@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BackToHomeLinkComponent } from './back-to-home-link.component';
+import { HeaderComponent } from './header.component';
 
-describe('BackToHomeLinkComponent', () => {
-  let component: BackToHomeLinkComponent;
-  let fixture: ComponentFixture<BackToHomeLinkComponent>;
+describe('HeaderComponent', () => {
+  let component: HeaderComponent;
+  let fixture: ComponentFixture<HeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BackToHomeLinkComponent]
+      imports: [HeaderComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(BackToHomeLinkComponent);
+    fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
