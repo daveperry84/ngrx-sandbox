@@ -1,10 +1,4 @@
-<header class="header">
-  <div class="header__content" routerLink="/home">
-    <img src="../assets/imgs/ngrx-white.png"/>
-    <span>VS</span>
-    <img src="../assets/imgs/angular_white.png"/>
-  </div>
-</header>
+<app-header [currentRoute]="currentRoute"></app-header>
 <main class="main">
   <router-outlet></router-outlet>
 </main>

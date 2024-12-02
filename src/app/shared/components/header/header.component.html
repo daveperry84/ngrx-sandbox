@@ -1,0 +1,20 @@
+<header class="header">
+    <div class="header__content">
+        <div class="header__logo" routerLink="/home">
+            <img src="../assets/imgs/ngrx-white.png"/>
+            <span>VS</span>
+            <img src="../assets/imgs/angular_white.png"/>
+        </div>
+        <div class="header__menu">
+            <mat-icon [matMenuTriggerFor]="menu">menu</mat-icon>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item [matMenuTriggerFor]="stateManagement">State Management Forms</button>
+                <button *ngIf="currentRoute !== '/home'" routerLink="/home" mat-menu-item>Home</button>
+            </mat-menu>
+            <mat-menu #stateManagement="matMenu">
+                <button *ngIf="currentRoute !== '/ngrx-form'" routerLink="/ngrx-form" mat-menu-item>NgRx</button>
+                <button *ngIf="currentRoute !== '/ng-services-form'" routerLink="/ng-services-form" mat-menu-item>Angular Services</button>
+            </mat-menu>
+        </div>
+    </div>
+</header>

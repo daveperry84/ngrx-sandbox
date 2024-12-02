@@ -1,34 +1,4 @@
-$header-height: 58px;
-
-.header {
-    background-color: var(--primary);
-    height: $header-height;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    &__content {
-        padding: 0 15px;
-        display: flex;
-        height: 58px;
-        align-items: center;
-        gap: 8px;
-        cursor: pointer;
-        max-width: 120px;
-        
-        img {
-            height: 38px;
-        }
-
-        span {
-            color: #FFF;
-            font-size: 18px;
-            font-weight: 700;
-        }
-    }
-}
-
 .main {
-    min-height: calc(100vh - $header-height);
+    min-height: calc(100vh - var(--header-height));
     overflow: auto;
 }
