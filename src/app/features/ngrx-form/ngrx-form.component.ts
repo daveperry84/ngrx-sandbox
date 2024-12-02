@@ -7,13 +7,15 @@ import { take } from 'rxjs';
 import { UserData, UserDataState } from '../../shared/models/user-data.model';
 import { undoLastUserChange, updateUser } from '../../shared/states/user-data/user-data.actions';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-ngrx-form',
   standalone: true,
   imports: [
     UserFormComponent,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
 ],
   templateUrl: './ngrx-form.component.html',
   styleUrl: './ngrx-form.component.scss'

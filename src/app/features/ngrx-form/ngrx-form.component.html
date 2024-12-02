@@ -1,18 +1,18 @@
 <div class="ngrx">
     <div class="ngrx__title">
         <img src="../../../assets/imgs/ngrx-logo.svg" />
-        <h1>Store form data using NgRx</h1>
+        <h1>Manage form state with NgRx</h1>
     </div>
+    <button 
+        type="button" 
+        class="ngrx__undo-btn" 
+        mat-button 
+        color="primary"
+        (click)="undoLastChange()"
+        [disabled]="!undoEnabled">
+        <mat-icon>undo</mat-icon>
+        Undo Last Change
+    </button>
 
-    <app-user-form [userData]="userData" (saveUser)="saveUserData($event)">
-        <button 
-            type="button" 
-            class="ngrx__undo-btn" 
-            mat-stroked-button 
-            color="primary"
-            (click)="undoLastChange()"
-            [disabled]="!undoEnabled">
-            Undo Last Change
-        </button>
-    </app-user-form>
+    <app-user-form [userData]="userData" (saveUser)="saveUserData($event)"></app-user-form>
 </div>
