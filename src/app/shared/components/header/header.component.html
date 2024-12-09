@@ -8,8 +8,9 @@
         <div class="header__menu">
             <mat-icon [matMenuTriggerFor]="menu">menu</mat-icon>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item [matMenuTriggerFor]="stateManagement">State Management Forms</button>
                 <button *ngIf="currentRoute !== '/home'" routerLink="/home" mat-menu-item>Home</button>
+                <button *ngIf="currentRoute !== '/q-and-a'" routerLink="/q-and-a" mat-menu-item>Q & A</button>
+                <button mat-menu-item [matMenuTriggerFor]="stateManagement">State Management Forms</button>
             </mat-menu>
             <mat-menu #stateManagement="matMenu">
                 <button *ngIf="currentRoute !== '/ngrx-form'" routerLink="/ngrx-form" mat-menu-item>NgRx</button>

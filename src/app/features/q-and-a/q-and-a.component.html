@@ -1,0 +1,19 @@
+<div class="q-and-a">
+    <div class="q-and-a__title">
+        <mat-icon>question_answer</mat-icon>
+        <h1>Q & A - NgRx vs Ng Services</h1>
+    </div>
+
+    <mat-accordion class="q-and-a__panels" multi>
+        <mat-expansion-panel class="q-and-a__panel" *ngFor="let panelData of content">
+            <mat-expansion-panel-header class="q-and-a__panel-header">
+                <mat-panel-title class="q-and-a__panel-title">
+                    <mat-icon>help</mat-icon>
+                    {{ panelData.question }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <div [innerHTML]="panelData.answer"></div>
+        </mat-expansion-panel>
+      </mat-accordion>
+</div>
