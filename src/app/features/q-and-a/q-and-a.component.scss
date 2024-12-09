@@ -10,7 +10,7 @@
         justify-content: center;
         gap: 8px;
         align-items: center;
-        margin-top: 15px;
+        margin: 15px 0 30px;
 
         mat-icon {
             color: var(--primary);
@@ -24,6 +24,24 @@
             font-weight: 500;
             font-size: 30px;
             line-height: 1.2em;
+        }
+    }
+
+    &__panels {
+        width: 100%;
+    }
+
+    &__panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 66px;
+    }
+
+    &__panel-title {
+        mat-icon {
+            color: var(--secondary);
+            margin-right: 5px;
         }
     }
 }
