@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { redoLastUserChange, undoLastUserChange, updateUser } from "./user-data.actions";
+import { redoLastUserChange, resetUser, undoLastUserChange, updateUser } from "./user-data.actions";
 import { initialUserData } from "../../constants/initial-user-data.constant";
 import { UserDataState } from "../../models/user-data.model";
 
@@ -26,5 +26,8 @@ export const userDataReducer = createReducer(
         let newFirstPast = state.present;
         let newFuture = state.future.slice(1);
         return { past: [newFirstPast, ...state.past], present: newPresent, future: newFuture };
-    })
+    }),
+    on(resetUser, () => {
+        return initialUserState;
+    }),
 )

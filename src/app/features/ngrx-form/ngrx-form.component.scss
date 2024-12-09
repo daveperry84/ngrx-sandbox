@@ -34,9 +34,21 @@
         padding: 4px 30px;
     }
 
+    &__action-btn {
+        span {
+            color: inherit;
+        }
+    }
+
     @media (max-width: 768px) {
         h1 {
             font-size: 18px;
+        }
+
+        &__action-btn {
+            span {
+                display: none;
+            }
         }
     }
 }
