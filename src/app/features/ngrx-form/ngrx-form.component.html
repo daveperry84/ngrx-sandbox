@@ -3,16 +3,29 @@
         <img src="../../../assets/imgs/ngrx-logo.svg" />
         <h1>Manage form state with NgRx</h1>
     </div>
-    <button 
+
+    <div class="ngrx__actions">
+        <button 
         type="button" 
-        class="ngrx__undo-btn" 
+        class="ngrx__action-btn" 
         mat-button 
         color="primary"
         (click)="undoLastChange()"
         [disabled]="!undoEnabled">
         <mat-icon>undo</mat-icon>
-        Undo Last Change
+        Undo Change
     </button>
+    <button 
+        type="button" 
+        class="ngrx__action-btn" 
+        mat-button 
+        color="primary"
+        (click)="redoLastChange()"
+        [disabled]="!redoEnabled">
+        <mat-icon>redo</mat-icon>
+        Redo Change
+    </button>
+    </div>
 
     <app-user-form [userData]="userData" (saveUser)="saveUserData($event)"></app-user-form>
 </div>

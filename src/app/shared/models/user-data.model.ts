@@ -1,6 +1,7 @@
 export interface UserDataState {
     past: UserData[];
     present: UserData;
+    future: UserData[];
 }
 
 export interface UserData {
