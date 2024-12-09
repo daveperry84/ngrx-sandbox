@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
 import { take } from 'rxjs';
 import { UserData, UserDataState } from '../../shared/models/user-data.model';
-import { undoLastUserChange, updateUser } from '../../shared/states/user-data/user-data.actions';
+import { redoLastUserChange, resetUser, undoLastUserChange, updateUser } from '../../shared/states/user-data/user-data.actions';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -23,12 +23,14 @@ import { MatIconModule } from '@angular/material/icon';
 export class NgrxFormComponent implements OnInit {
   userData!: UserData;
   undoEnabled = false;
+  redoEnabled = false;
+  resetEnabled = false;
 
   constructor(private store: Store<AppState>) { }
   
   ngOnInit(): void {
     this.retrieveUserState((userState) => {
-      this.undoEnabled = !!userState.past.length;
+      this.setActionStates(userState);
       this.userData = userState.present;
     });
   }
@@ -40,7 +42,7 @@ export class NgrxFormComponent implements OnInit {
   saveUserData(user: UserData): void {
     this.store.dispatch(updateUser(user));
     this.retrieveUserState((userState) => {
-      this.undoEnabled = !!userState.past.length;
+      this.setActionStates(userState);
     });
   }
 
@@ -48,7 +50,29 @@ export class NgrxFormComponent implements OnInit {
     this.store.dispatch(undoLastUserChange());
     this.retrieveUserState((userState) => {
       this.userData = { ...this.userData, ...userState.present };
-      this.undoEnabled = !!userState.past.length;
+      this.setActionStates(userState);
     });
+  }
+
+  redoLastChange(): void {
+    this.store.dispatch(redoLastUserChange());
+    this.retrieveUserState((userState) => {
+      this.userData = { ...this.userData, ...userState.present };
+      this.setActionStates(userState);
+    });
+  }
+
+  resetForm(): void {
+    this.store.dispatch(resetUser());
+    this.retrieveUserState((userState) => {
+      this.userData = { ...userState.present };
+      this.setActionStates(userState);
+    });
+  }
+
+  private setActionStates(userState: UserDataState): void {
+    this.undoEnabled = !!userState.past.length;
+    this.redoEnabled = !!userState.future.length;
+    this.resetEnabled = this.undoEnabled || this.redoEnabled;
   }
 }
