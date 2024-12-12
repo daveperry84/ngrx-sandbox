@@ -1,19 +1,25 @@
 <div class="home">
-    <div class="home__images">
-        <img src="../../../assets/imgs/ngrx-logo.svg" />
-        <img src="../../../assets/imgs/vs-image.webp" />
-        <img src="../../../assets/imgs/angular-logo.webp"/>
-    </div>
-   
-    <div class="home__content">
-        <div class="home__title">
-            <h1>State Management in Angular applications</h1>
-            <h2>NgRx vs Angular Services</h2>
-            <small>By Dave Perry</small>
+    <div class="home__banner">
+        <div class="home__banner-content">
+            <div class="home__heading">
+                <img src="../../../assets/imgs/ngrx-white.png" />
+                <span class="vs-font">VS</span>
+                <img src="../../../assets/imgs/angular_white.png"/>
+            </div>
+            <div class="home__sub-heading">
+                <h1>NgRx vs Angular Services</h1>
+                <h2>Exploring state management methods in Angular applications</h2>
+                <div class="home__created-by">
+                    <img src="../../../assets/imgs/DaveProfilePic.jpg"/>
+                    <span>By Dave Perry</span>
+                </div>
+            </div>
         </div>
+    </div>
 
+    <div class="home__content">
         <div class="home__objective">
-            <h3>Objective</h3>
+            <h3 class="vs-font">Objective</h3>
             <p>Create a basic Angular application where the user can fill out a dynamic form. The form should
                 consist of a few fields (e.g., Name, Email, and a dynamic list of phone numbers) and perform real-time 
                 validation. The form data should also be saved to the global state, and the app should
@@ -22,8 +28,12 @@
         </div>
 
         <div class="home__actions">
-            <span class="home__action-link" routerLink="/ngrx-form">Manage state with NgRx <mat-icon>arrow_forward</mat-icon></span>
-            <span class="home__action-link" routerLink="/ng-services-form">Manage state with Ng Services <mat-icon>arrow_forward</mat-icon></span>
+            <div class="home__action-link ngrx" routerLink="/ngrx-form">
+                <span>Manage state with NgRx</span>
+            </div>
+            <div class="home__action-link ng-services" routerLink="/ng-services-form">
+                <span>Manage state with Ng Services</span>
+            </div>
         </div>
     </div>
 </div>

@@ -1,97 +1,206 @@
-$font-size: 15px;
-$hover-font-size: 16px;
+$heading-font: 82px;
+$sub-heading-h1-font: 52px;
+$sub-heading-h2-font: 24px;
+$image-height: 150px;
+$heading-gap: 32px;
+$heading-mb: 48px;
+$sub-heading-h1-mb: 12px;
+$sub-heading-h2-mb: 30px;
+$reduce-by: 0.7;
 
 .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-
-    &__images {
-        margin: 15px;
+    &__banner {
+        background: radial-gradient(farthest-corner at 0px 140px, var(--secondary) 0%, var(--primary) 100%);
+        height: 500px;
+        width: 100%;
         display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 42px;
+    }
+
+    &__banner-content {
+        padding: 30px;
+    }
+
+    &__heading {
+        margin-bottom: $heading-mb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: $heading-gap;
 
         img {
-            max-height: 120px;
+            max-height: $image-height;
+        }
 
-            @media (max-width: 768px) {
-                max-height: 80px;
-            }
+        span {
+            font-weight: 400;
+            font-size: $heading-font;
+            color: #FFF;
+        }
+    }
+
+    &__sub-heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h1, h2, span {
+            color: #FFF;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: $sub-heading-h1-font;
+            line-height: $sub-heading-h1-font;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: $sub-heading-h1-mb;
+        }
+
+        h2 {
+            font-size: $sub-heading-h2-font;
+            line-height: $sub-heading-h2-font;
+            margin-bottom: $sub-heading-h2-mb;
+        }
+    }
+
+    &__created-by {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+            height: 45px;
+            border-radius: 50%;
+        }
+
+        span {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
         }
     }
 
     &__content {
-        max-width: 500px;
-        min-width: 250px;
-        margin-bottom: 15px;
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-
-        h1 {
-            text-align: center;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-    }
-
-    &__title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        h1, h2 {
-            margin-bottom: 0;
-        }
-
-        h2 {
-            color: var(--secondary-font);
-        }
+        gap: 24px;
+        padding: 0 10vw 30px;
     }
 
     &__actions {
+        flex-basis: 50%;
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-end;
-        margin-top: 10px;
-        gap: 15px;
+        gap: 20px;
     }
 
     &__action-link {
-        font-size: $font-size;
-        font-weight: 500;
+        width: 100%;
+        height: 90px;
+        background-color: #E5E5E5;
         display: flex;
+        justify-content: end;
         align-items: center;
-        text-align: right;
-        gap: 2px;
         cursor: pointer;
+        border-radius: 4px;
+        background-repeat: no-repeat;
+        background-position-x: 10%;
+        background-position-y: center;
+        
+        &.ngrx {
+            background-image: url('../../../assets/imgs/ngrx-button.png');
 
-        mat-icon {
-            font-size: $font-size;
-            width: $font-size;
-            height: $font-size;
+            &:hover,
+            &:focus {
+                background-color: var(--primary);
+
+                span {
+                    color: #FFF;
+                }
+            }
         }
 
-        &:hover {
-            color: var(--secondary-font);
-            font-size: $hover-font-size;
-            text-decoration: underline;
-            transition: font-size 0.5s;
+        &.ng-services {
+            background-image: url('../../../assets/imgs/angular-button.png');
 
-            mat-icon {
-                font-size: $hover-font-size;
-                transition: font-size 0.5s;
+            &:hover,
+            &:focus {
+                background-color: var(--secondary);
+
+                span {
+                    color: #FFF;
+                }
             }
+        }
+
+        span {
+            font-size: 20px;
+            font-weight: 500;
+            padding: 10px 20px;
+            text-align: end;
+            max-width: 50%;
         }
     }
 
     &__objective {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 3px dashed var(--primary);
+        border-radius: 15px;
+        padding: 15px;
+        flex-basis: 50%;
+
         h3 {
             font-weight: 500;
             color: var(--secondary-font);
+            font-size: 36px;
+            line-height: 36px;
         }
+
+        p {
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.6em;
+            margin-bottom: 0;
+        }
+    }
+
+    @media (max-width: 992px) {
+        &__content {
+            flex-direction: column;
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__heading {
+            margin-bottom: calc($heading-mb * $reduce-by);
+            gap: calc($heading-gap * $reduce-by);
+
+            img {
+                max-height: calc($image-height * $reduce-by);
+            }
+
+            span {
+                font-size: calc($heading-font * $reduce-by);
+            }
+        }
+
+        &__sub-heading {
+            h1 {
+                font-size: calc($sub-heading-h1-font * $reduce-by);
+                line-height: calc($sub-heading-h1-font * $reduce-by);
+                margin-bottom: calc($sub-heading-h1-mb * $reduce-by);
+            }
+
+            h2 {
+                font-size: calc($sub-heading-h2-font * $reduce-by);
+                margin-bottom: calc($sub-heading-h2-mb * $reduce-by);
+            }
+        }   
     }
 }
